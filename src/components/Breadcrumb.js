@@ -33,6 +33,12 @@ const Container = styled.div`
         font-weight: bold;
         margin: 0 7.5px;
     }
+    @media screen and (max-width: 860px){
+        & {
+            margin-left: 15px;
+        }
+
+    }
 `;
 
 function Breadcrumb() {

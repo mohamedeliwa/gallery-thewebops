@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import { FaUserPlus } from "react-icons/fa";
 import logo from "../images/logo.png";
-
+import { Link } from "react-router-dom";
 const Container = styled.div`
   //margin: 2rem;
   max-width: 1100px;
@@ -13,7 +13,7 @@ const Container = styled.div`
   // Styles for fixed navbar on large screens
   ${ props => props.fixed ? (`
     & {
-      background-color: lightgrey;
+      background-color: white;
       min-width: 100%;
       position: fixed;
       top: 0;
@@ -22,6 +22,7 @@ const Container = styled.div`
       align-items: center;
       padding: 0.5rem;
       padding-left: 2rem;
+      z-index: 999;
       img {
         margin: 0 2rem;
         max-height: 40px
@@ -211,7 +212,8 @@ const HeaderNav = () => {
             <a href="/#">VENDORS</a>
           </li>
           <li>
-            <a href="/#">GALLERY</a>
+            <Link to="/categories">GALLERY</Link>
+            {/* <a href="/#">GALLERY</a> */}
           </li>
           <li>
             <a href="/#">IDEAS & MORE</a>
@@ -263,7 +265,8 @@ const HeaderNav = () => {
             <a href="/#">VENDORS</a>
           </li>
           <li>
-            <a href="/#">GALLERY</a>
+            <Link to="/categories">GALLERY</Link>
+            {/* <a href="/#">GALLERY</a> */}
           </li>
           <li>
             <a href="/#">IDEAS & MORE</a>
