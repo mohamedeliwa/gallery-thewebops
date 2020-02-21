@@ -18,18 +18,26 @@ const Container = styled.div`
     margin-top: 10px;
     background-color: #000;
     color: #fff;
-    .icon {
-        font-size: 20px;
-        //background-color: lightgreen;
-        position: absolute;
-        top: 55px;
+    overflow: hidden;
+    .icon-div {
+        width: 18px;
+        height: 100%;
+        font-size: 20px;     
+        position: absolute;    
         cursor: pointer;
     }
     .left-icon {
-        left: 3px;
+        top: 0;
+        left: 0;
     }
     .right-icon {
-        right: 3px;
+        top: 0;
+        right: 0;
+    }
+    .icon {
+        position: absolute;
+        top: 55px;
+        left: 0;
     }
 `;
 
@@ -61,29 +69,82 @@ const Slider = styled.div`
 
 
 const Carousel = () => {
-    const [ shownImages, setShownImages ] = useState(icons);
+    const [ shownIcons, setShownIcons ] = useState(icons.slice(0,8));
 
-    let sliderContent = shownImages.map((image, i) => {
-        if (i <= 7){
+    let sliderContent = shownIcons.map((image, i) => {
+        // if (i <= 7){
             return (
                 <div className="card" style={{"backgroundColor": "transparent"}} key={image.id}>
                     <img src={image.url} alt="asd" />
                     <p>{image.title}</p>
                 </div>
             )
-        }
+        // }
     });
     const handleClick = (e) => {
-        if (e.target.className.baseVal === "icon left-icon") {
-            console.log("go left")
-        } else if (e.target.className.baseVal === "icon right-icon" ) {
-            console.log("go right");
+        console.log(e.currentTarget.id);
+        
+        if (e.currentTarget.id === "left-icon") {
+            console.log("go left");
+            let sliderStart = sliderContent[0].key;
+            console.log(sliderStart);
+            sliderStart = shownIcons.filter(image => image.id == sliderStart);
+            console.log(sliderStart);
+            const startIndex = icons.indexOf(sliderStart[0]);
+            console.log(startIndex);
+            if(startIndex > 0){
+                let iconsArray = icons.slice(startIndex-1);
+                let index = 0;
+                while(iconsArray.length < 8){
+                    iconsArray.push(icons[index]);
+                    index++;
+                }
+                setShownIcons(iconsArray);
+            } else if (startIndex == 0) {
+                let iconsArray = icons.slice(icons.length-1);
+                let index = 0;
+                while(iconsArray.length < 8){
+                    iconsArray.push(icons[index]);
+                    index++;
+                }
+                setShownIcons(iconsArray);
+            }
+
+        } else if (e.currentTarget.id === "right-icon" ) {
+             console.log("go right");
+            let sliderStart = sliderContent[0].key;
+            console.log(sliderStart);
+            sliderStart = shownIcons.filter(image => image.id == sliderStart);
+            console.log(sliderStart);
+            const startIndex = icons.indexOf(sliderStart[0]);
+            console.log(startIndex);
+            if(startIndex < icons.length-1){
+                let iconsArray = icons.slice(startIndex+1);
+                let index = 0;
+                while(iconsArray.length < 8){
+                    iconsArray.push(icons[index]);
+                    index++;
+                }
+                setShownIcons(iconsArray);
+            } else if (startIndex == icons.length-1) {
+                console.log("more")
+                let iconsArray = icons.slice(icons.length-2);
+                console.log(iconsArray);
+                let index = 0;
+                while(iconsArray.length < 8){
+                    iconsArray.push(icons[index]);
+                    index++;
+                }
+                setShownIcons(iconsArray);
+            }
         }
        
     }
     return (
         <Container>
-            <FaCaretLeft className="icon left-icon" onClick={handleClick} />
+            <div className="icon-div left-icon" id="left-icon" onClick={handleClick}>
+                <FaCaretLeft className="icon"  />
+            </div>
             <Slider>
                 {sliderContent}
                 {/* <div className="card" style={{"backgroundColor": "green"}}>
@@ -115,7 +176,9 @@ const Carousel = () => {
                     <p>{image.title}</p>
                 </div>   */}
             </Slider>
-            <FaCaretRight className="icon right-icon"  onClick={handleClick} />
+            <div className="icon-div right-icon" id="right-icon" onClick={handleClick}>
+                <FaCaretRight className="icon"   /> 
+            </div>
         </Container>
     )
 }

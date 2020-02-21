@@ -12,7 +12,7 @@ const AppStyled = styled.div`
   padding-top: 2.5rem;
   //text-align: center;
   max-width: 1100px;
-  min-height: 200vh;
+  min-height: 100vh;
   margin: 0 auto;
 `;
 
