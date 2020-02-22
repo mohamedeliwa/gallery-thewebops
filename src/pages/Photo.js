@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaAngleRight, FaFacebookF, FaTwitter } from "react-icons/fa";
-import images from "../data/gallery-images";
 import Breadcrumb from "../components/Breadcrumb";
 import { Thumbnail } from "../components/Gallery";
+import {connect } from "react-redux";
+
 const Container = styled.div`
   font-family: "Lato", sans-serif;
   .related-photos-div {
@@ -86,15 +87,16 @@ const PhotoContainer = styled.div`
       }
   }
 `;
-export const relatedPhotos = images.map((image, i) => {
-  return image.id !== 1 ? (
-    <Thumbnail bg={image.url} key={image.id}>
-      <img src={image.url} alt={image.title} />
-      <h3>{image.title}</h3>
-    </Thumbnail>
-  ) : null;
-});
-const Photo = () => {
+
+const Photo = ({images}) => {
+  const relatedPhotos = images.map((image, i) => {
+    return image.id !== 1 ? (
+      <Thumbnail bg={image.url} key={image.id}>
+        <img src={image.url} alt={image.title} />
+        <h3>{image.title}</h3>
+      </Thumbnail>
+    ) : null;
+  });
   return (
     <Container>
       <Breadcrumb>
@@ -121,4 +123,10 @@ const Photo = () => {
   );
 };
 
-export default Photo;
+const mapStateToProps = (state) => {
+  return {
+    images: state.images
+  }
+}
+
+export default connect(mapStateToProps)(Photo);

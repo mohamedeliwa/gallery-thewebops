@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 import { FaCaretRight, FaCaretLeft } from "react-icons/fa";
-import icons from "../data/slider-icons";
-const image = {
-    url: "https://weds360-production.s3.eu-west-1.amazonaws.com/store/category/42/icon/big-05336d746529a7b2585adbf945dea5e2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA3XIBZMGBAF2YAFWK%2F20200220%2Feu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20200220T121710Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=74c875e676f379990fc8f43d20cce13b785713c529f8c430a23f4720d5b3acc0",
+import { connect } from "react-redux";
 
-    title: "Health",
-    id: 9
-}
 const Container = styled.div`
     //background-color: lightgreen;
     font-family: "Lato", sans-serif;
@@ -68,18 +63,16 @@ const Slider = styled.div`
 `;
 
 
-const Carousel = () => {
+const Carousel = ({icons}) => {
     const [ shownIcons, setShownIcons ] = useState(icons.slice(0,8));
 
     let sliderContent = shownIcons.map((image, i) => {
-        // if (i <= 7){
             return (
                 <div className="card" style={{"backgroundColor": "transparent"}} key={image.id}>
                     <img src={image.url} alt="asd" />
                     <p>{image.title}</p>
                 </div>
-            )
-        // }
+            )     
     });
     const handleClick = (e) => {
         console.log(e.currentTarget.id);
@@ -147,34 +140,6 @@ const Carousel = () => {
             </div>
             <Slider>
                 {sliderContent}
-                {/* <div className="card" style={{"backgroundColor": "green"}}>
-                    <img src={image.url} alt="asd" />
-                    <p>{image.title}</p>
-                </div>
-                <div className="card" style={{"backgroundColor": "red"}}>
-                    <img src={image.url} alt="asd" />
-                    <p>{image.title}</p>
-                </div>
-                <div className="card" style={{"backgroundColor": "blue"}}>
-                    <img src={image.url} alt="asd" />
-                    <p>{image.title}</p>
-                </div>
-                <div className="card" style={{"backgroundColor": "yellow"}}>
-                    <img src={image.url} alt="asd" />
-                    <p>{image.title}</p>
-                </div>
-                <div className="card" style={{"backgroundColor": "grey"}}>
-                    <img src={image.url} alt="asd" />
-                    <p>{image.title}</p>
-                </div>
-                <div className="card" style={{"backgroundColor": "red"}}>
-                    <img src={image.url} alt="asd" />
-                    <p>{image.title}</p>
-                </div>
-                <div className="card" style={{"backgroundColor": "yellow"}}>
-                    <img src={image.url} alt="asd" />
-                    <p>{image.title}</p>
-                </div>   */}
             </Slider>
             <div className="icon-div right-icon" id="right-icon" onClick={handleClick}>
                 <FaCaretRight className="icon"   /> 
@@ -182,5 +147,10 @@ const Carousel = () => {
         </Container>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        icons: state.sliderIcons
+    }
+}
 
-export default Carousel;
+export default connect(mapStateToProps)(Carousel);

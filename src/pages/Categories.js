@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import styled from "styled-components";
 import {FaHome} from "react-icons/fa"
 import Carousel from '../components/Carousel';
-import categoriesCard from "../images/categories-card.png"
-import categoriesCardBg from "../images/categories-card-bg.png"
+import categoriesCard from "../images/categories-card.png";
+import categoriesCardBg from "../images/categories-card-bg.png";
 
 const Container = styled.div`
 
@@ -166,7 +166,7 @@ const Categories = () => {
                     <h3>Wedding Ideas</h3>
                 </div>
                 <div className="hover-div">
-                    <FaHome class="home-icon"/>
+                    <FaHome className="home-icon"/>
                     <h2>Wedding Ideas</h2>
                 </div>
             </div>

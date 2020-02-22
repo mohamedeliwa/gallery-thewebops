@@ -32,7 +32,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - started building photo_id page
 ## Day 7
  - photo_id page built
- 
+ - started building and using redux store
+ - Redux store is built
+
+# What I didn't get the time to do
+
+   -  pages are still static, for example /:photo_id page doesn't change its content depending on the photo clicked
+   - I didn't get the time to setup use json-server 
+   - I didn't get the time to convert pure redux logic into redux-toolkit
+   - I didn't get the time to build the Mobile NavBar   
 
  TODO's
  - Read styled-components docs  &#x2705;
@@ -43,5 +51,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     * [read a possible answer](https://stackoverflow.com/questions/1759987/listening-for-variable-changes-in-javascript)
     * conditional rendering of navs when screen size changes
     * Mobile navbar >> collapse button >> items in collapse
-    * [How to use json-server with create-react-app](https://dev.to/mariorodeghiero/json-server-with-reactjs-3chd)
-    * [Ninja Redux videos](https://www.youtube.com/playlist?list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG)
+    * [Ninja Redux videos 34 -> 39](https://www.youtube.com/playlist?list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG) &#x2705;
+    * [Follow this RTK tutorial](https://redux-toolkit.js.org/tutorials/intermediate-tutorial#intermediate-tutorial-redux-toolkit-in-action)
+    * [How to use json-server with create-react-app](https://dev.to/mariorodeghiero/json-server-with-reactjs-3chd)  

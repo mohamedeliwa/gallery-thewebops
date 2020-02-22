@@ -26,11 +26,11 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/categories">
-            <Categories />
-          </Route>
           <Route path="/categories/:category_id">
             <Home />
+          </Route>
+          <Route path="/categories">
+            <Categories />
           </Route>
           <Route path="/:photo_id">
             <Photo />
