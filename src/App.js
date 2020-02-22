@@ -6,6 +6,7 @@ import BottomSection from "./components/BottomSection";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Categories from "./pages/Categories";
+import Photo from "./pages/Photo";
 
 const AppStyled = styled.div`
   //background-color: lightgrey;
@@ -22,12 +23,18 @@ function App() {
       <AppStyled className="App">
         <Header />
         <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/categories">
-          <Categories />
-        </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/categories">
+            <Categories />
+          </Route>
+          <Route path="/categories/:category_id">
+            <Home />
+          </Route>
+          <Route path="/:photo_id">
+            <Photo />
+          </Route>
         </Switch>
         <BottomSection />
         <Footer />

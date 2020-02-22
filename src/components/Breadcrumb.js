@@ -41,12 +41,13 @@ const Container = styled.div`
     }
 `;
 
-function Breadcrumb() {
+function Breadcrumb(props) {
     return (
         <Container>
             <p>GALLERY</p>
             <FaAngleRight className="icon" />
             <p>WEDDING IDEAS</p>
+            {props.children}
         </Container>
     )
 }

@@ -26,9 +26,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Day 5
  - categories controls built
  - starting building slideshow of categories
+## Day 6
  - slideshow is built
  - categories page UI is built
- - 
+ - started building photo_id page
+## Day 7
+ - photo_id page built
+ 
 
  TODO's
  - Read styled-components docs  &#x2705;

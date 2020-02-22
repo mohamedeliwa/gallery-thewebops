@@ -15,7 +15,7 @@ const Container = styled.div`
         }
     }
 `;
-const Thumbnail = styled.div`
+export const Thumbnail = styled.div`
     //background-color: lightgrey;
     font-family: "Lato", sans-serif;
     max-width: 100%;
